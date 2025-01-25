@@ -13,10 +13,10 @@ class Product{
     }
 
     public decimal TotalCost(){
-        return 0;
+        return _price * _quantity;
     }
 
-    public string GetDisplayText(){
-        return null;
+    public override string ToString(){
+        return $"{_name} (ID: {_productId}, Price: {_price:C}, Quantity: {_quantity})";
     }
 }

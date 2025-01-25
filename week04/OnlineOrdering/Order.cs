@@ -12,18 +12,30 @@ class Order {
     }
 
     public void AddProduct(Product product){
-
+        _products.Add(product);
     }
 
     public decimal TotalPrice(){
-        return 0;
+        decimal total = 0;
+        foreach (var product in _products)
+        {
+            total += product.TotalCost();
+        }
+
+        total += _customer.GetCountry().ToUpper() == "USA" ? _domesticShipping : _internationalShipping;
+        return total;
     }
 
     public string GetDisplayPacking(){
-        return null;
+        string label = "Packing Label:\n";
+        foreach (var product in _products)
+        {
+            label += $"- {product}\n";
+        }
+        return label;
     }
 
     public string GetDisplayShipping(){
-        return null;
+        return $"Shipping Label:\n{_customer}";
     }
 }

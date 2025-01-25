@@ -14,10 +14,10 @@ class Address{
     }
 
     public string GetCountry(){
-        return null;
+        return _country;
     }
 
-    public string GetDisplayText(){
-        return null;
+    public override string ToString(){
+        return $"{_street}\n{_city}, {_state}\n{_country}";
     }
 }

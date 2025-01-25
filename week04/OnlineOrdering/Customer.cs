@@ -10,10 +10,10 @@ class Customer
     }
 
     public string GetCountry(){
-        return null;
+        return _address.GetCountry();
     }
 
-    public string GetDisplayText(){
-        return null;
+    public override string ToString(){
+        return $"{_name}\n{_address}";
     }
 }

@@ -46,6 +46,6 @@ public class Video{
     {
         int minutes = _length / 60;
         int seconds = _length % 60;
-        return $"Title: {_title}\nAuthor: {_author}\nLength: {minutes}m {seconds}s\nNumber of Comments: {GetCommentCount()}";
+        return $"Title: {_title}\nAuthor: {_author}\nLength: {minutes}m {seconds}s \nNumber of Comments: {GetCommentCount()}";
     }
 }

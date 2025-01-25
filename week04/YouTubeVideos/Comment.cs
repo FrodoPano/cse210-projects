@@ -9,15 +9,15 @@ public class Comment {
     }
 
     public string CommenterName(){
-        return null;
+        return _user;
     }
 
     public string GetText(){
-        return null;
+        return _text;
     }
 
     public string GetDisplayText(){
-        return null;
+        return $"{_user}: {_text}";
     }
 
 }

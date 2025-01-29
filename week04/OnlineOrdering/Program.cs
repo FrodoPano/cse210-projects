@@ -17,11 +17,11 @@ class Program
         Customer customer2 = new Customer("Jane Smith", address2);
 
         // Create Orders
-        Order order1 = new Order(customer1, 5, 35);
+        Order order1 = new Order(customer1);
         order1.AddProduct(product1);
         order1.AddProduct(product2);
 
-        Order order2 = new Order(customer2, 5, 35);
+        Order order2 = new Order(customer2);
         order2.AddProduct(product2);
         order2.AddProduct(product3);
 

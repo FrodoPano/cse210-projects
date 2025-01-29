@@ -1,14 +1,12 @@
 class Order {
     private List<Product> _products;
     private Customer _customer;
-    private decimal _domesticShipping;
-    private decimal _internationalShipping;
+    private const decimal _domesticShipping = 5.00m;
+    private const decimal _internationalShipping = 35.00m;
 
-    public Order(Customer customer, decimal domesticShipping, decimal internationalShipping){
+    public Order(Customer customer){
         _customer = customer;
         _products = new List<Product>();
-        _domesticShipping = domesticShipping;
-        _internationalShipping = internationalShipping;
     }
 
     public void AddProduct(Product product){

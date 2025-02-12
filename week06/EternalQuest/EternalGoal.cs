@@ -4,7 +4,7 @@ public class EternalGoal : Goal
 
     public override void RecordEvent()
     {
-        // Always continues; never complete.
+        
     }
 
     public override bool IsComplete()

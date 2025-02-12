@@ -20,4 +20,6 @@ public abstract class Goal
     public abstract bool IsComplete();
     public abstract string GetDetailsString();
     public abstract string GetStringRepresentation();
+
+    
 }

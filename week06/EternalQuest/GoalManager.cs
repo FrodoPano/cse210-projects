@@ -3,11 +3,13 @@
 public class GoalManager
 {
     private List<Goal> _goals = new List<Goal>();
+    private int _level;
     private int _score;
 
     public GoalManager()
     {
         _score = 0;
+        _level = 1;
     }
 
     public void Start()
@@ -17,7 +19,7 @@ public class GoalManager
 
     public void DisplayPlayerInfo()
     {
-        Console.WriteLine($"Player Score: {_score}");
+        Console.WriteLine($"Player Score: {_score} | Level: {_level}");
     }
 
     public void ListGoalNames()
@@ -34,6 +36,7 @@ public class GoalManager
         {
             Console.WriteLine($"{i + 1}. [{( _goals[i].IsComplete() ? "X" : " " )}] {_goals[i].GetDetailsString()}");
         }
+        Console.WriteLine($"Total Score: {_score} | Level: {_level}");
     }
 
     public void CreateGoal(Goal goal)
@@ -43,16 +46,20 @@ public class GoalManager
 
     public void RecordEvent(int index)
     {
-        int adjustedIndex = index - 1;  // Convert user input (1-based) to list index (0-based)
-    
-        if (adjustedIndex >= 0 && adjustedIndex < _goals.Count)
+        if (index >= 1 && index <= _goals.Count)
         {
-            _goals[adjustedIndex].RecordEvent();
-            _score += _goals[adjustedIndex].GetPoints();
+            _goals[index - 1].RecordEvent();
+            _score += _goals[index - 1].GetPoints();
+            CheckLevelUp();
         }
-        else
+    }
+
+    private void CheckLevelUp()
+    {
+        while (_score >= _level * 10000)
         {
-            Console.WriteLine("Invalid goal number. Please try again.");
+            _level++;
+            Console.WriteLine($"Congratulations! You leveled up to Level {_level}!");
         }
     }   
 
@@ -60,6 +67,8 @@ public class GoalManager
     {
         using (StreamWriter writer = new StreamWriter(filename))
         {
+            writer.WriteLine(_score);
+            writer.WriteLine(_level);
             foreach (var goal in _goals)
             {
                 writer.WriteLine(goal.GetStringRepresentation());
@@ -73,12 +82,15 @@ public class GoalManager
         {
             string[] lines = File.ReadAllLines(filename);
             _goals.Clear();
-            foreach (string line in lines)
+            _score = int.Parse(lines[0]);
+            _level = int.Parse(lines[1]);
+            
+            for (int i = 2; i < lines.Length; i++)
             {
-                string[] parts = line.Split(':');
+                string[] parts = lines[i].Split(':');
                 string type = parts[0];
                 string[] details = parts[1].Split(',');
-
+                
                 if (type == "SimpleGoal")
                 {
                     _goals.Add(new SimpleGoal(details[0], details[1], int.Parse(details[2])));

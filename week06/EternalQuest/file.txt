@@ -1,3 +1,5 @@
-SimpleGoal:Clean desk,Clean my desk,100,False
-EternalGoal:Say hi,Say hi everyday,50
-ChecklistGoal:Go to class,Go to all the clases,50,10,500,1
+100
+1
+SimpleGoal:Sunday speach,i have to give an speach the sunday,100,False
+EternalGoal:pray in the morning,i have to pray when i wake up,50
+ChecklistGoal:go to institude,go every wensday to institute,100,3,10000,1

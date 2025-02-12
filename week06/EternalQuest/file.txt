@@ -1,0 +1,3 @@
+SimpleGoal:Clean desk,Clean my desk,100,False
+EternalGoal:Say hi,Say hi everyday,50
+ChecklistGoal:Go to class,Go to all the clases,50,10,500,1
